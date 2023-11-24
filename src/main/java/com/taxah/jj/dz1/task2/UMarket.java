@@ -83,7 +83,7 @@ public class UMarket {
 
                     if (Food.class.isAssignableFrom(thing.getClass())) {
                         Food foodThing = (Food) thing;
-                        System.out.printf("[%d] %s (Белки: %s Жиры: %s Углеводы: %s)\n",
+                        System.out.printf("[%d] %-22s (Б: %3s | Ж: %3s | У: %3s)\n",
                                 counter[0]++, thing.getName(),
                                 foodThing.getProteins() ? "Да" : "Нет",
                                 foodThing.getFats() ? "Да" : "Нет",

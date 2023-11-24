@@ -36,7 +36,7 @@ public class Cart<T extends Food> {
     public void printFoodstuffs() {
         AtomicInteger index = new AtomicInteger(1);
         foodstuffs.forEach(food -> {
-            System.out.printf("[%d] %s (Белки: %s Жиры: %s Углеводы: %s)\n",
+            System.out.printf("[%d] %-22s (Б: %3s | Ж: %3s | У: %3s)\n",
                     index.getAndIncrement(), food.getName(),
                     food.getProteins() ? "Да" : "Нет",
                     food.getFats() ? "Да" : "Нет",
@@ -77,6 +77,6 @@ public class Cart<T extends Food> {
                     .findFirst().orElse(null));
             return foodstuffs.stream().anyMatch(method);
         }
-        return false;
+        return flag;
     }
 }
