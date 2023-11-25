@@ -70,13 +70,14 @@ public class Cart<T extends Food> {
         else
             System.out.println("Невозможно сбалансировать корзину по БЖУ.");
     }
-    private boolean addIfNotPresent(boolean flag, Predicate<Food> method) {
-        if (!flag) {
-            foodstuffs.add((T) market.getThings(Food.class).stream()
+    private boolean addIfNotPresent(boolean macronutrient, Predicate<Food> method) {
+        if (!macronutrient) {
+            market.getThings(Food.class).stream()
                     .filter(method)
-                    .findFirst().orElse(null));
+                    .findFirst().ifPresent(food -> foodstuffs.add((T) food));
             return foodstuffs.stream().anyMatch(method);
+            // необходимо в случае если .ifPresent optional value = null
         }
-        return flag;
+        return true;
     }
 }
